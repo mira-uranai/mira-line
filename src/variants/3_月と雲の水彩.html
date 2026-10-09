@@ -50,10 +50,9 @@
   /* ヒーロー */
   .hero { position: relative; padding-top: 3.2rem; }
   .hero::before { content: ""; position: absolute; left: 50%; top: 0; width: 340px; height: 340px; transform: translateX(-50%); background: radial-gradient(circle, rgba(199,181,242,.28), rgba(226,194,125,.08) 45%, transparent 70%); pointer-events: none; }
-  .portrait { position: relative; width: 250px; height: 230px; margin: 0 auto .6rem; }
-  .portrait svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-  .portrait .icon { position: absolute; left: 54%; top: 52%; width: 150px; height: 150px; transform: translate(-50%, -50%); border-radius: 50%; object-fit: cover;
-    box-shadow: 0 0 50px 6px rgba(199,181,242,.30), 0 18px 34px -16px rgba(0,0,0,.8); }
+  .portrait { position: relative; width: 300px; height: 300px; margin: -30px auto -10px; }
+  .portrait .deco { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .portrait .icon { position: absolute; left: 51.56%; top: 50.78%; width: 142px; height: 142px; transform: translate(-50%, -50%); border-radius: 50%; object-fit: cover; box-shadow: 0 16px 30px -14px rgba(0,0,0,.8); }
   .hero-copy { position: relative; text-align: center; padding: 0 20px; }
   .signature { font-family: var(--font-latin); font-style: italic; font-weight: 500; font-size: 1.5rem; color: var(--gold-pale); letter-spacing: .08em; margin: 0; line-height: 1; opacity: .9; }
   .kicker { display: inline-block; font-size: .78rem; letter-spacing: .28em; color: var(--gold); margin: .9rem 0 0; padding-left: .28em; }
@@ -144,7 +143,7 @@
   .reveal.in { opacity: 1; transform: none; }
 
   @media (prefers-reduced-motion: reduce) {
-    .cta::after, .portrait .rays { animation: none; }
+    .cta::after { animation: none; }
     .reveal { opacity: 1; transform: none; transition: none; }
     .sticky { transition: none; }
   }
@@ -155,14 +154,8 @@
   <section class="hero">
     <div class="hero-copy">
       <div class="portrait">
-        <svg viewBox="0 0 250 230" aria-hidden="true">
-          <defs><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1cc"/><stop offset=".55" stop-color="#e2c27d"/><stop offset="1" stop-color="#b98d45" stop-opacity=".6"/></linearGradient></defs>
-          <!-- 大きな三日月がアイコンを左から抱く -->
-          <path d="M150 12A104 104 0 1 0 150 218 92 92 0 1 1 150 12Z" fill="url(#mg)" opacity=".92"/>
-          <path d="M214 40C214.4 46 217 48.6 223 49 217 49.4 214.4 52 214 58 213.6 52 211 49.4 205 49 211 48.6 213.6 46 214 40Z" fill="#f6e6bd"/>
-          <circle cx="226" cy="76" r="1.8" fill="#f6e6bd"/>
-        </svg>
-        <img class="icon" src="../../images/portrait.jpg" alt="占い師ミラ" width="180" height="180">
+        <img class="deco" src="../../images/deco_3.webp" alt="" aria-hidden="true">
+        <img class="icon" src="../../images/portrait.jpg" alt="占い師ミラ" width="180" height="180" fetchpriority="high">
       </div>
       <p class="signature">Mira</p>
       <p class="kicker">星々の声を届ける占い師</p>
