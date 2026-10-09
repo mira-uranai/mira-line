@@ -8,7 +8,7 @@
 <meta name="description" content="星々の声を届ける占い師ミラ。霊視で今の状況とこれからの流れをお伝えします。無料鑑定は公式LINEから。">
 <meta property="og:title" content="ミラの無料鑑定">
 <meta property="og:description" content="ミラが霊視で、あなたの波動を視させていただきます。無料鑑定は公式LINEから。">
-<meta property="og:image" content="https://mira-uranai.github.io/mira-line/images/og.jpg">
+<meta property="og:image" content="https://mira-uranai.github.io/mira-line/../../images/og.jpg">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,9 +50,13 @@
   /* ヒーロー */
   .hero { position: relative; padding-top: 3.2rem; }
   .hero::before { content: ""; position: absolute; left: 50%; top: 0; width: 340px; height: 340px; transform: translateX(-50%); background: radial-gradient(circle, rgba(199,181,242,.28), rgba(226,194,125,.08) 45%, transparent 70%); pointer-events: none; }
-  .portrait { position: relative; width: 160px; height: 160px; margin: 0 auto 1.1rem; }
-  .portrait .icon { width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
-    box-shadow: 0 0 56px 6px rgba(199,181,242,.32), 0 18px 34px -16px rgba(0,0,0,.85); }
+  .portrait { position: relative; width: 190px; height: 238px; margin: 0 auto 1rem; }
+  .portrait .arch { position: absolute; inset: 0; border-radius: 95px 95px 14px 14px;
+    background: linear-gradient(180deg, rgba(199,181,242,.30), rgba(240,169,198,.16) 55%, rgba(26,19,50,.0)); }
+  .portrait .arch-line { position: absolute; inset: -9px; border-radius: 104px 104px 20px 20px; border: 1px solid rgba(226,194,125,.6); }
+  .portrait .icon { position: absolute; left: 50%; top: 46%; width: 150px; height: 150px; transform: translate(-50%, -50%); border-radius: 50%; object-fit: cover;
+    box-shadow: 0 16px 30px -14px rgba(0,0,0,.8); }
+  .portrait .top-star { position: absolute; left: 50%; top: -30px; width: 16px; transform: translateX(-50%); color: #e2c27d; }
   .hero-copy { position: relative; text-align: center; padding: 0 20px; }
   .signature { font-family: var(--font-latin); font-style: italic; font-weight: 500; font-size: 1.5rem; color: var(--gold-pale); letter-spacing: .08em; margin: 0; line-height: 1; opacity: .9; }
   .kicker { display: inline-block; font-size: .78rem; letter-spacing: .28em; color: var(--gold); margin: .9rem 0 0; padding-left: .28em; }
@@ -143,7 +147,7 @@
   .reveal.in { opacity: 1; transform: none; }
 
   @media (prefers-reduced-motion: reduce) {
-    .cta::after { animation: none; }
+    .cta::after, .portrait .rays { animation: none; }
     .reveal { opacity: 1; transform: none; transition: none; }
     .sticky { transition: none; }
   }
@@ -154,7 +158,10 @@
   <section class="hero">
     <div class="hero-copy">
       <div class="portrait">
-        <img class="icon" src="images/portrait.jpg" alt="占い師ミラ" width="180" height="180" fetchpriority="high">
+        <div class="arch-line" aria-hidden="true"></div>
+        <div class="arch" aria-hidden="true"></div>
+        <svg class="top-star" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.5c.4 4.6 1.9 8.6 6 10.5-4.1 1.9-5.6 5.9-6 10.5-.4-4.6-1.9-8.6-6-10.5 4.1-1.9 5.6-5.9 6-10.5Z"/></svg>
+        <img class="icon" src="../../images/portrait.jpg" alt="占い師ミラ" width="180" height="180">
       </div>
       <p class="signature">Mira</p>
       <p class="kicker">星々の声を届ける占い師</p>
