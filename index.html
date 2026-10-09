@@ -53,43 +53,53 @@
   body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.85; font-size: 16px; -webkit-font-smoothing: antialiased; word-break: auto-phrase; }
   .page { max-width: 520px; margin: 0 auto; padding: 0 16px 3.5rem; }
 
-  .hero { position: relative; text-align: center; padding-top: 2.6rem; }
-  .hero::before { content: ""; position: absolute; inset: 0 -10% -10% -10%; background: var(--hero-wash); filter: blur(12px); border-radius: 50%; pointer-events: none; }
-  .hero > * { position: relative; }
-  .avatar { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; border: 3px solid var(--surface); box-shadow: var(--shadow); }
-  .kicker { font-size: .82rem; letter-spacing: .14em; color: var(--muted); margin: 0; }
-  h1 { font-family: var(--font-display); font-weight: 700; font-size: 1.75rem; line-height: 1.5; margin: .3rem 0 .6rem; }
-  h1 .accent { color: var(--lavender); }
-  .intro { text-align: left; background: color-mix(in srgb, var(--surface) 72%, transparent); border: 1px solid var(--line); border-radius: 18px; padding: 1.1rem 1.25rem; margin: 1.4rem 0 0; color: var(--ink-soft); }
-  .intro p { margin: 0 0 .7rem; }
-  .intro p:first-child { text-align: center; color: var(--ink); font-weight: 500; }
-  .intro .intro-em { margin: 0; text-align: center; color: var(--ink); font-weight: 700; }
+  body { background-image: radial-gradient(120% 420px at 50% -60px, rgba(165,150,220,.26), transparent 70%), radial-gradient(70% 300px at 100% 120px, rgba(210,150,180,.14), transparent 70%); background-repeat: no-repeat; }
 
-  .cta { display: flex; align-items: center; justify-content: center; gap: .6rem; width: 100%; padding: 1.05rem 1rem; border-radius: 999px; background: var(--line-green); color: #fff; font-weight: 700; font-size: 1.08rem; text-decoration: none; box-shadow: 0 10px 24px -12px rgba(6,199,85,.7); transition: background .2s, transform .15s; }
+  .hero { text-align: center; padding-top: 2.8rem; }
+  .avatar-wrap { width: 140px; height: 140px; margin: 0 auto 1.1rem; border-radius: 50%; padding: 4px; background: linear-gradient(140deg, var(--gold), #e8d3a6 45%, var(--gold)); box-shadow: var(--shadow); }
+  .avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--surface); }
+  .kicker { font-size: .8rem; letter-spacing: .2em; color: var(--gold); margin: 0; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: 1.9rem; line-height: 1.45; letter-spacing: .06em; margin: .25rem 0 1.4rem; }
+  h1 .accent { color: var(--lavender); }
+
+  .cta { display: flex; align-items: center; justify-content: center; gap: .6rem; width: 100%; min-height: 60px; padding: .9rem 1rem; border-radius: 999px; background: var(--line-green); color: #fff; font-weight: 700; font-size: 1.08rem; letter-spacing: .04em; text-decoration: none; box-shadow: 0 12px 26px -14px rgba(6,199,85,.8); transition: background .2s, transform .15s; }
   .cta:hover { background: var(--line-green-dark); }
   .cta:active { transform: scale(.98); }
-  .cta svg { width: 26px; height: 26px; flex: none; }
-  .cta-note { text-align: center; font-size: .82rem; color: var(--muted); margin: .6rem 0 0; }
-
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 1.4rem 1.25rem; margin-top: 1.8rem; box-shadow: var(--shadow); }
-  .card h2 { font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 1rem; text-align: center; }
-  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
-  .steps li { display: grid; grid-template-columns: 2rem 1fr; gap: .7rem; align-items: start; }
-  .num { width: 2rem; height: 2rem; border-radius: 50%; background: var(--surface-2); color: var(--lavender); font-family: var(--font-display); font-weight: 700; display: grid; place-items: center; }
-  .steps p { margin: .1rem 0 0; }
   .cta:focus-visible { outline: 2px solid var(--lavender); outline-offset: 3px; }
+  .cta svg { width: 26px; height: 26px; flex: none; }
+  .cta-note { text-align: center; font-size: .78rem; color: var(--muted); margin: .55rem 0 0; }
 
-  .notes { margin: 0; padding: 0; list-style: none; font-size: .92rem; color: var(--ink-soft); display: grid; gap: .4rem; }
-  .notes li::before { content: "・"; color: var(--rose); }
+  .ornament { display: flex; align-items: center; justify-content: center; gap: .8rem; color: var(--gold); font-size: .7rem; margin: 2.2rem auto 1.4rem; }
+  .ornament::before, .ornament::after { content: ""; width: 56px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); opacity: .6; }
+  .ornament::after { transform: scaleX(-1); }
 
-  .cta-bottom { margin-top: 1.8rem; }
-  footer { text-align: center; font-size: .78rem; color: var(--muted); margin-top: 2.4rem; }
+  .intro { text-align: center; color: var(--ink-soft); line-height: 2; }
+  .intro p { margin: 0 0 1.1rem; }
+  .intro .greet { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--ink); }
+  .intro .intro-em { margin: 1.5rem 0 0; color: var(--ink); font-weight: 700; }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 1.6rem 1.35rem; margin-top: 2.2rem; box-shadow: var(--shadow); }
+  h2 { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: .08em; margin: 0 0 1.2rem; text-align: center; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.15rem; position: relative; }
+  .steps::before { content: ""; position: absolute; left: 1rem; top: 1rem; bottom: 2.9rem; width: 1px; background: var(--line); }
+  .steps li { display: grid; grid-template-columns: 2rem 1fr; gap: .85rem; align-items: start; position: relative; }
+  .num { width: 2rem; height: 2rem; border-radius: 50%; background: var(--lavender); color: #fff; font-family: var(--font-display); font-weight: 700; font-size: .95rem; display: grid; place-items: center; }
+  .steps p { margin: .1rem 0 0; }
+
+  .notes-box { background: var(--surface-2); border-radius: 16px; padding: 1.2rem 1.25rem; margin-top: 1.2rem; }
+  .notes-box h2 { font-size: 1rem; margin-bottom: .7rem; }
+  .notes { margin: 0; padding: 0; list-style: none; font-size: .9rem; color: var(--ink-soft); display: grid; gap: .35rem; }
+  .notes li { position: relative; padding-left: 1.1em; }
+  .notes li::before { content: ""; position: absolute; left: .2em; top: .85em; width: 5px; height: 5px; border-radius: 50%; background: var(--rose); }
+
+  .cta-bottom { margin-top: 2.2rem; }
+  footer { text-align: center; font-size: .75rem; letter-spacing: .1em; color: var(--muted); margin-top: 2.6rem; }
 </style>
 </head>
 <body>
 <main class="page">
   <section class="hero">
-    <img class="avatar" src="images/mira.jpg" alt="占い師ミラ" width="128" height="128">
+    <div class="avatar-wrap"><img class="avatar" src="images/mira.jpg" alt="占い師ミラ" width="140" height="140"></div>
     <p class="kicker">星々の声を届ける占い師</p>
     <h1>ミラの<span class="accent">無料鑑定</span></h1>
     <a class="cta" href="https://line.me/R/ti/p/@876vakgk" rel="noopener">
@@ -97,27 +107,30 @@
       LINEで無料鑑定を受け取る
     </a>
     <p class="cta-note">LINEアプリが開きます</p>
-    <div class="intro">
-      <p>ご訪問ありがとうございます🌙</p>
-      <p>ミラが霊視で、あなたの波動を視させていただき、今の状況と、これからの流れをお伝えします。</p>
-      <p>お金、お仕事、人間関係、恋愛、ご縁のこと。ひとりで抱えているお悩みを、そっとお聞かせくださいね。</p>
-      <p class="intro-em">無料鑑定は、ミラの公式LINEから受け付けています✨</p>
-    </div>
+  </section>
+
+  <div class="ornament" aria-hidden="true">✦</div>
+
+  <section class="intro">
+    <p class="greet">ご訪問ありがとうございます🌙</p>
+    <p>ミラが霊視で、あなたの波動を<br>視させていただき、<br>今の状況と、これからの流れを<br>お伝えします。</p>
+    <p>お金、お仕事、人間関係、恋愛、<br>ご縁のこと。<br>ひとりで抱えているお悩みを、<br>そっとお聞かせくださいね。</p>
+    <p class="intro-em">無料鑑定は、ミラの公式LINEから<br>受け付けています✨</p>
   </section>
 
   <section class="card" aria-labelledby="how">
     <h2 id="how">受け取り方</h2>
     <ol class="steps">
-      <li><span class="num">1</span><p>上のボタンから、ミラの公式LINEを友だち追加</p></li>
-      <li><span class="num">2</span><p>友だち追加すると、無料鑑定のご案内が自動で届きます</p></li>
-      <li><span class="num">3</span><p>ご案内にそって、お申し込みください✨</p></li>
+      <li><span class="num">1</span><p>ボタンから、ミラの公式LINEを友だち追加</p></li>
+      <li><span class="num">2</span><p>無料鑑定のご案内が、自動で届きます</p></li>
+      <li><span class="num">3</span><p>ご案内にそって、お申し込みください</p></li>
     </ol>
   </section>
 
-  <section class="card" aria-labelledby="notes">
+  <section class="notes-box" aria-labelledby="notes">
     <h2 id="notes">お願い</h2>
     <ul class="notes">
-      <li>無料鑑定は【初回の方】＆【フォロワー様】限定です</li>
+      <li>無料鑑定は、初回の方・フォロワー様限定です</li>
       <li>20歳以上の方に限らせていただいています</li>
       <li>1日3名様までとさせていただいています</li>
     </ul>
@@ -130,7 +143,7 @@
     </a>
   </div>
 
-  <footer>© ミラ</footer>
+  <footer>© Mira</footer>
 </main>
 </body>
 </html>
