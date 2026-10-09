@@ -44,23 +44,26 @@
       var(--night);
   }
 
-  /* 星のまたたき（背景全体） */
-  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-  .stars::before, .stars::after {
-    content: ""; position: absolute; inset: 0;
-    background-image:
-      radial-gradient(1.2px 1.2px at 12% 18%, #fff, transparent),
-      radial-gradient(1px 1px at 78% 12%, #fff, transparent),
-      radial-gradient(1.4px 1.4px at 34% 64%, #f6e6bd, transparent),
-      radial-gradient(1px 1px at 88% 48%, #fff, transparent),
-      radial-gradient(1.2px 1.2px at 6% 82%, #f6e6bd, transparent),
-      radial-gradient(1px 1px at 58% 88%, #fff, transparent),
-      radial-gradient(1.3px 1.3px at 92% 76%, #fff, transparent),
-      radial-gradient(1px 1px at 46% 34%, #f6e6bd, transparent);
-    animation: twinkle 5s ease-in-out infinite alternate;
+  /* 星のきらめき（背景全体）。小さな点だとほこりに見えるので、十字に光る星を1つずつ光らせる */
+  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .sparkle {
+    position: absolute; width: var(--s); height: var(--s);
+    transform: translate(-50%, -50%) scale(0); opacity: 0;
+    background: radial-gradient(circle, #fff 0 9%, var(--c) 18%, transparent 55%);
+    filter: drop-shadow(0 0 calc(var(--s) * .35) var(--c));
+    animation: sparkle var(--d) ease-in-out var(--delay) infinite;
   }
-  .stars::after { transform: translate(7%, 11%) rotate(14deg); animation-delay: -2.5s; opacity: .7; }
-  @keyframes twinkle { from { opacity: .25; } to { opacity: .9; } }
+  .sparkle::before, .sparkle::after {
+    content: ""; position: absolute; left: 50%; top: 50%; width: 170%; height: max(1.5px, 6%);
+    transform: translate(-50%, -50%); border-radius: 50%;
+    background: linear-gradient(90deg, transparent, var(--c) 35%, #fff 50%, var(--c) 65%, transparent);
+  }
+  .sparkle::after { transform: translate(-50%, -50%) rotate(90deg); }
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(.15) rotate(0deg); }
+    45%      { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(30deg); }
+    60%      { opacity: .85; transform: translate(-50%, -50%) scale(.85) rotate(40deg); }
+  }
 
   .page { position: relative; z-index: 1; max-width: 520px; margin: 0 auto; padding: 0 0 3.5rem; }
   .inner { padding: 0 20px; }
@@ -161,7 +164,8 @@
   .reveal.in { opacity: 1; transform: none; }
 
   @media (prefers-reduced-motion: reduce) {
-    .stars::before, .stars::after, .cta::after { animation: none; }
+    .cta::after { animation: none; }
+    .sparkle { animation: none; opacity: .6; transform: translate(-50%, -50%) scale(.6) rotate(30deg); }
     .reveal { opacity: 1; transform: none; transition: none; }
     .sticky { transition: none; }
   }
@@ -237,6 +241,27 @@
 </div>
 
 <script>
+  // 背景の星：画面のあちこちに散らして、それぞれ違うタイミングで光らせる
+  (function () {
+    var box = document.querySelector('.stars');
+    if (!box) return;
+    var colors = ['#fff4d6', '#f6e6bd', '#ffffff', '#e2c27d', '#f3d9ff'];
+    var count = window.innerWidth < 600 ? 22 : 34;
+    for (var i = 0; i < count; i++) {
+      var s = document.createElement('span');
+      var r = Math.random();
+      var size = r < .55 ? 12 + Math.random() * 7 : (r < .88 ? 20 + Math.random() * 10 : 34 + Math.random() * 12);
+      s.className = 'sparkle';
+      s.style.left = (3 + Math.random() * 94) + '%';
+      s.style.top = (2 + Math.random() * 96) + '%';
+      s.style.setProperty('--s', size.toFixed(1) + 'px');
+      s.style.setProperty('--c', colors[Math.floor(Math.random() * colors.length)]);
+      s.style.setProperty('--d', (2.6 + Math.random() * 3.4).toFixed(2) + 's');
+      s.style.setProperty('--delay', (-Math.random() * 6).toFixed(2) + 's');
+      box.appendChild(s);
+    }
+  })();
+
   (function () {
     var els = document.querySelectorAll('.reveal');
     if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
