@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ミラの無料鑑定</title>
-<meta name="description" content="星々の声を届ける占い師ミラ。初回の方限定の無料鑑定は公式LINEから受け付けています。">
+<meta name="description" content="星々の声を届ける占い師ミラ。霊視とカードで今の状況とこれからの流れをお伝えします。無料鑑定は公式LINEから。">
 <meta property="og:title" content="ミラの無料鑑定">
 <meta property="og:description" content="初回の方限定の無料鑑定は、公式LINEから受け付けています。">
 <meta property="og:image" content="https://mira-uranai.github.io/mira-line/images/mira.jpg">
@@ -60,7 +60,10 @@
   .kicker { font-size: .82rem; letter-spacing: .14em; color: var(--muted); margin: 0; }
   h1 { font-family: var(--font-display); font-weight: 700; font-size: 1.75rem; line-height: 1.5; margin: .3rem 0 .6rem; }
   h1 .accent { color: var(--lavender); }
-  .lead { color: var(--ink-soft); margin: 0 0 1.6rem; }
+  .intro { text-align: left; background: color-mix(in srgb, var(--surface) 72%, transparent); border: 1px solid var(--line); border-radius: 18px; padding: 1.1rem 1.25rem; margin: .4rem 0 1.6rem; color: var(--ink-soft); }
+  .intro p { margin: 0 0 .7rem; }
+  .intro p:first-child { text-align: center; color: var(--ink); font-weight: 500; }
+  .intro .intro-em { margin: 0; text-align: center; color: var(--ink); font-weight: 700; }
 
   .cta { display: flex; align-items: center; justify-content: center; gap: .6rem; width: 100%; padding: 1.05rem 1rem; border-radius: 999px; background: var(--line-green); color: #fff; font-weight: 700; font-size: 1.08rem; text-decoration: none; box-shadow: 0 10px 24px -12px rgba(6,199,85,.7); transition: background .2s, transform .15s; }
   .cta:hover { background: var(--line-green-dark); }
@@ -74,10 +77,7 @@
   .steps li { display: grid; grid-template-columns: 2rem 1fr; gap: .7rem; align-items: start; }
   .num { width: 2rem; height: 2rem; border-radius: 50%; background: var(--surface-2); color: var(--lavender); font-family: var(--font-display); font-weight: 700; display: grid; place-items: center; }
   .steps p { margin: .1rem 0 0; }
-  .keyword { display: inline-flex; align-items: center; gap: .5rem; margin-top: .4rem; }
-  .keyword code { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; background: var(--surface-2); border-radius: 8px; padding: .15rem .7rem; }
-  .copy { font: inherit; font-size: .8rem; border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft); border-radius: 999px; padding: .2rem .8rem; cursor: pointer; }
-  .copy:focus-visible, .cta:focus-visible { outline: 2px solid var(--lavender); outline-offset: 3px; }
+  .cta:focus-visible { outline: 2px solid var(--lavender); outline-offset: 3px; }
 
   .notes { margin: 0; padding: 0; list-style: none; font-size: .92rem; color: var(--ink-soft); display: grid; gap: .4rem; }
   .notes li::before { content: "・"; color: var(--rose); }
@@ -92,7 +92,12 @@
     <img class="avatar" src="images/mira.jpg" alt="占い師ミラ" width="128" height="128">
     <p class="kicker">星々の声を届ける占い師</p>
     <h1>ミラの<span class="accent">無料鑑定</span></h1>
-    <p class="lead">ご訪問ありがとうございます🌙<br>無料鑑定は、公式LINEから受け付けています。</p>
+    <div class="intro">
+      <p>ご訪問ありがとうございます🌙</p>
+      <p>ミラが霊視とカードで、あなたの波動を視させていただき、今の状況と、これからの流れをお伝えします。</p>
+      <p>恋愛、お仕事、人間関係、ご縁のこと。ひとりで抱えているお悩みを、そっとお聞かせくださいね。</p>
+      <p class="intro-em">無料鑑定は、ミラの公式LINEから受け付けています✨</p>
+    </div>
     <a class="cta" href="https://line.me/R/ti/p/@876vakgk" rel="noopener">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.6 2 11.03c0 3.97 3.55 7.3 8.35 7.93.33.07.77.22.88.5.1.25.07.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.45 5.73-3.37 7.82-5.78C21.24 14.38 22 12.8 22 11.03 22 6.6 17.52 3 12 3Z"/></svg>
       LINEで無料鑑定を受け取る
@@ -104,9 +109,8 @@
     <h2 id="how">受け取り方</h2>
     <ol class="steps">
       <li><span class="num">1</span><p>上のボタンから、ミラの公式LINEを友だち追加</p></li>
-      <li><span class="num">2</span><div><p>トークに「運命」とだけ送信</p>
-        <span class="keyword"><code>運命</code><button class="copy" type="button" data-text="運命">コピー</button></span></div></li>
-      <li><span class="num">3</span><p>すぐに、鑑定のご案内が届きます✨</p></li>
+      <li><span class="num">2</span><p>友だち追加すると、無料鑑定のご案内が自動で届きます</p></li>
+      <li><span class="num">3</span><p>ご案内にそって、お申し込みください✨</p></li>
     </ol>
   </section>
 
@@ -114,8 +118,8 @@
     <h2 id="notes">お願い</h2>
     <ul class="notes">
       <li>無料鑑定は【初回の方】＆【フォロワー様】限定です</li>
+      <li>20歳以上の方に限らせていただいています</li>
       <li>1日3名様までとさせていただいています</li>
-      <li>心を込めて、おひとりずつ視させていただきます🕊️</li>
     </ul>
   </section>
 
@@ -128,14 +132,5 @@
 
   <footer>© ミラ</footer>
 </main>
-<script>
-  document.querySelectorAll('.copy').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var t = btn.getAttribute('data-text');
-      var done = function () { btn.textContent = 'コピーしました'; setTimeout(function () { btn.textContent = 'コピー'; }, 1800); };
-      if (navigator.clipboard) { navigator.clipboard.writeText(t).then(done, done); } else { done(); }
-    });
-  });
-</script>
 </body>
 </html>
