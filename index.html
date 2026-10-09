@@ -10,7 +10,6 @@
 <meta property="og:description" content="ミラが霊視で、あなたの波動を視させていただきます。無料鑑定は公式LINEから。">
 <meta property="og:image" content="https://mira-uranai.github.io/mira-line/images/og.jpg">
 <meta property="og:type" content="website">
-<link rel="preload" as="image" href="images/hero.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -67,9 +66,12 @@
   .inner { padding: 0 20px; }
 
   /* ヒーロー */
-  .hero { position: relative; }
-  .hero-img { width: 100%; height: auto; aspect-ratio: 1088 / 1360; object-fit: cover; -webkit-mask-image: linear-gradient(#000 82%, transparent); mask-image: linear-gradient(#000 82%, transparent); }
-  .hero-copy { position: relative; margin-top: -42%; text-align: center; padding: 0 20px; }
+  .hero { position: relative; padding-top: 3.2rem; }
+  .hero::before { content: ""; position: absolute; left: 50%; top: 0; width: 340px; height: 340px; transform: translateX(-50%); background: radial-gradient(circle, rgba(199,181,242,.28), rgba(226,194,125,.08) 45%, transparent 70%); pointer-events: none; }
+  .portrait { position: relative; width: 132px; height: 132px; margin: 0 auto 1.3rem; border-radius: 50%; padding: 3px; background: linear-gradient(140deg, var(--gold-deep), var(--gold-pale) 40%, var(--gold) 60%, var(--gold-deep)); box-shadow: 0 0 0 6px rgba(226,194,125,.08), 0 0 40px -4px rgba(199,181,242,.45); }
+  .portrait::after { content: ""; position: absolute; inset: -12px; border-radius: 50%; border: 1px solid rgba(226,194,125,.22); }
+  .portrait img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--night); }
+  .hero-copy { position: relative; text-align: center; padding: 0 20px; }
   .signature { font-family: var(--font-latin); font-style: italic; font-weight: 500; font-size: 1.5rem; color: var(--gold-pale); letter-spacing: .08em; margin: 0; line-height: 1; opacity: .9; }
   .kicker { display: inline-block; font-size: .78rem; letter-spacing: .28em; color: var(--gold); margin: .9rem 0 0; padding-left: .28em; }
   h1 {
@@ -169,11 +171,10 @@
 <div class="stars" aria-hidden="true"></div>
 <main class="page">
   <section class="hero">
-    <picture>
-      <source srcset="images/hero.webp" type="image/webp">
-      <img class="hero-img" src="images/hero.jpg" alt="水晶玉を手にほほえむ占い師ミラ" width="900" height="1125" fetchpriority="high">
-    </picture>
     <div class="hero-copy">
+      <div class="portrait">
+        <img src="images/portrait.jpg" alt="占い師ミラ" width="180" height="180" fetchpriority="high">
+      </div>
       <p class="signature">Mira</p>
       <p class="kicker">星々の声を届ける占い師</p>
       <h1>ミラの無料鑑定</h1>
