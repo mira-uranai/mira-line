@@ -2,148 +2,258 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1a1332">
 <title>ミラの無料鑑定</title>
 <meta name="description" content="星々の声を届ける占い師ミラ。霊視で今の状況とこれからの流れをお伝えします。無料鑑定は公式LINEから。">
 <meta property="og:title" content="ミラの無料鑑定">
-<meta property="og:description" content="初回の方限定の無料鑑定は、公式LINEから受け付けています。">
-<meta property="og:image" content="https://mira-uranai.github.io/mira-line/images/mira.jpg">
+<meta property="og:description" content="ミラが霊視で、あなたの波動を視させていただきます。無料鑑定は公式LINEから。">
+<meta property="og:image" content="https://mira-uranai.github.io/mira-line/images/og.jpg">
 <meta property="og:type" content="website">
+<link rel="preload" as="image" href="images/hero.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --font-display: 'Shippori Mincho', 'Yu Mincho', serif;
     --font-body: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', sans-serif;
-    --bg: #f9f4f6;
-    --surface: #ffffff;
-    --surface-2: #f4ecf2;
-    --ink: #473e56;
-    --ink-soft: #665c76;
-    --muted: #948aa2;
-    --line: #ecdfe8;
-    --lavender: #8a74c2;
-    --rose: #c9779a;
-    --gold: #ac813c;
+    --font-latin: 'Cormorant Garamond', 'Times New Roman', serif;
+
+    --night: #1a1332;
+    --ink: #f5eefa;
+    --ink-soft: #d9cfe6;
+    --muted: #a99cc0;
+    --gold: #e2c27d;
+    --gold-deep: #b98d45;
+    --gold-pale: #f6e6bd;
+    --glass-line: rgba(226,194,125,.32);
     --line-green: #06c755;
-    --line-green-dark: #05a647;
-    --hero-wash: linear-gradient(155deg, rgba(165,150,220,.30), rgba(210,150,180,.20) 48%, rgba(150,190,216,.22));
-    --shadow: 0 1px 2px rgba(90,60,90,.05), 0 14px 34px -20px rgba(90,60,90,.26);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #1b1526; --surface: #251d33; --surface-2: #2f2640;
-      --ink: #f0e8f3; --ink-soft: #d4cadd; --muted: #aca0ba; --line: #362b48;
-      --lavender: #b6a6e8; --rose: #e29cb8; --gold: #d8b069;
-      --hero-wash: linear-gradient(155deg, rgba(165,150,220,.20), rgba(210,150,180,.13) 48%, rgba(150,190,216,.14));
-      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 40px -22px rgba(0,0,0,.7);
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #1b1526; --surface: #251d33; --surface-2: #2f2640;
-    --ink: #f0e8f3; --ink-soft: #d4cadd; --muted: #aca0ba; --line: #362b48;
-    --lavender: #b6a6e8; --rose: #e29cb8; --gold: #d8b069;
-    --hero-wash: linear-gradient(155deg, rgba(165,150,220,.20), rgba(210,150,180,.13) 48%, rgba(150,190,216,.14));
-    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 40px -22px rgba(0,0,0,.7);
+    --line-green-dark: #05b14b;
+    --gold-text: linear-gradient(100deg, #b98d45 0%, #f6e6bd 30%, #e2c27d 52%, #fff4d6 70%, #c99a4f 100%);
   }
 
   * { box-sizing: border-box; }
   img { max-width: 100%; display: block; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.85; font-size: 16px; -webkit-font-smoothing: antialiased; word-break: auto-phrase; }
-  .page { max-width: 520px; margin: 0 auto; padding: 0 16px 3.5rem; }
+  html { background: var(--night); }
+  body {
+    margin: 0; min-height: 100vh; color: var(--ink); font-family: var(--font-body);
+    font-size: 16px; line-height: 1.9; -webkit-font-smoothing: antialiased; word-break: auto-phrase;
+    background:
+      radial-gradient(60% 40% at 50% 62%, rgba(150,110,210,.16), transparent 70%),
+      radial-gradient(50% 30% at 85% 90%, rgba(240,169,198,.08), transparent 70%),
+      var(--night);
+  }
 
-  body { background-image: radial-gradient(120% 420px at 50% -60px, rgba(165,150,220,.26), transparent 70%), radial-gradient(70% 300px at 100% 120px, rgba(210,150,180,.14), transparent 70%); background-repeat: no-repeat; }
+  /* 星のまたたき（背景全体） */
+  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .stars::before, .stars::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1.2px 1.2px at 12% 18%, #fff, transparent),
+      radial-gradient(1px 1px at 78% 12%, #fff, transparent),
+      radial-gradient(1.4px 1.4px at 34% 64%, #f6e6bd, transparent),
+      radial-gradient(1px 1px at 88% 48%, #fff, transparent),
+      radial-gradient(1.2px 1.2px at 6% 82%, #f6e6bd, transparent),
+      radial-gradient(1px 1px at 58% 88%, #fff, transparent),
+      radial-gradient(1.3px 1.3px at 92% 76%, #fff, transparent),
+      radial-gradient(1px 1px at 46% 34%, #f6e6bd, transparent);
+    animation: twinkle 5s ease-in-out infinite alternate;
+  }
+  .stars::after { transform: translate(7%, 11%) rotate(14deg); animation-delay: -2.5s; opacity: .7; }
+  @keyframes twinkle { from { opacity: .25; } to { opacity: .9; } }
 
-  .hero { text-align: center; padding-top: 2.8rem; }
-  .avatar-wrap { width: 140px; height: 140px; margin: 0 auto 1.1rem; border-radius: 50%; padding: 4px; background: linear-gradient(140deg, var(--gold), #e8d3a6 45%, var(--gold)); box-shadow: var(--shadow); }
-  .avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--surface); }
-  .kicker { font-size: .8rem; letter-spacing: .2em; color: var(--gold); margin: 0; }
-  h1 { font-family: var(--font-display); font-weight: 700; font-size: 1.9rem; line-height: 1.45; letter-spacing: .06em; margin: .25rem 0 1.4rem; }
-  h1 .accent { color: var(--lavender); }
+  .page { position: relative; z-index: 1; max-width: 520px; margin: 0 auto; padding: 0 0 3.5rem; }
+  .inner { padding: 0 20px; }
 
-  .cta { display: flex; align-items: center; justify-content: center; gap: .6rem; width: 100%; min-height: 60px; padding: .9rem 1rem; border-radius: 999px; background: var(--line-green); color: #fff; font-weight: 700; font-size: 1.08rem; letter-spacing: .04em; text-decoration: none; box-shadow: 0 12px 26px -14px rgba(6,199,85,.8); transition: background .2s, transform .15s; }
-  .cta:hover { background: var(--line-green-dark); }
+  /* ヒーロー */
+  .hero { position: relative; }
+  .hero-img { width: 100%; height: auto; aspect-ratio: 1088 / 1360; object-fit: cover; -webkit-mask-image: linear-gradient(#000 82%, transparent); mask-image: linear-gradient(#000 82%, transparent); }
+  .hero-copy { position: relative; margin-top: -42%; text-align: center; padding: 0 20px; }
+  .signature { font-family: var(--font-latin); font-style: italic; font-weight: 500; font-size: 1.5rem; color: var(--gold-pale); letter-spacing: .08em; margin: 0; line-height: 1; opacity: .9; }
+  .kicker { display: inline-block; font-size: .78rem; letter-spacing: .28em; color: var(--gold); margin: .9rem 0 0; padding-left: .28em; }
+  h1 {
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(2.2rem, 10vw, 2.8rem); line-height: 1.3; letter-spacing: .1em;
+    margin: .35rem 0 0; padding-left: .1em;
+    background: var(--gold-text); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 2px 14px rgba(226,194,125,.35));
+  }
+  .badge { display: inline-flex; align-items: center; gap: .5rem; margin: .9rem 0 1.5rem; padding: .3rem 1rem; border: 1px solid var(--glass-line); border-radius: 999px; font-size: .8rem; color: var(--gold-pale); letter-spacing: .1em; background: rgba(26,19,50,.5); backdrop-filter: blur(4px); }
+  .badge i { font-style: normal; color: var(--gold); }
+
+  /* LINEボタン */
+  .cta {
+    position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: .6rem;
+    width: 100%; min-height: 64px; padding: .9rem 1rem; border-radius: 999px;
+    background: linear-gradient(180deg, #19d566, var(--line-green) 55%, var(--line-green-dark));
+    color: #fff; font-weight: 700; font-size: 1.1rem; letter-spacing: .05em; text-decoration: none;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset, 0 14px 30px -12px rgba(6,199,85,.75), 0 0 34px -6px rgba(6,199,85,.35);
+    transition: transform .15s, filter .2s;
+  }
+  .cta::after { content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent); transform: skewX(-20deg); animation: shine 3.6s ease-in-out infinite; }
+  @keyframes shine { 0%, 55% { left: -60%; } 100% { left: 130%; } }
+  .cta:hover { filter: brightness(1.05); }
   .cta:active { transform: scale(.98); }
-  .cta:focus-visible { outline: 2px solid var(--lavender); outline-offset: 3px; }
-  .cta svg { width: 26px; height: 26px; flex: none; }
-  .cta-note { text-align: center; font-size: .78rem; color: var(--muted); margin: .55rem 0 0; }
+  .cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+  .cta svg { width: 28px; height: 28px; flex: none; }
+  .cta-arrow { font-size: .9rem; opacity: .85; margin-left: .1rem; }
+  .cta-note { text-align: center; font-size: .76rem; color: var(--muted); margin: .6rem 0 0; letter-spacing: .06em; }
 
-  .ornament { display: flex; align-items: center; justify-content: center; gap: .8rem; color: var(--gold); font-size: .7rem; margin: 2.2rem auto 1.4rem; }
-  .ornament::before, .ornament::after { content: ""; width: 56px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); opacity: .6; }
+  /* 飾り罫 */
+  .ornament { display: flex; align-items: center; justify-content: center; gap: .9rem; color: var(--gold); margin: 2.8rem auto 1.8rem; }
+  .ornament::before, .ornament::after { content: ""; width: 70px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
   .ornament::after { transform: scaleX(-1); }
+  .ornament svg { width: 22px; height: 22px; }
 
-  .intro { text-align: center; color: var(--ink-soft); line-height: 2; }
-  .intro p { margin: 0 0 1.1rem; }
-  .intro .greet { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--ink); }
-  .intro .intro-em { margin: 1.5rem 0 0; color: var(--ink); font-weight: 700; }
+  /* 説明文 */
+  .intro { text-align: center; color: var(--ink-soft); line-height: 2.05; }
+  .intro p { margin: 0 0 1.3rem; }
+  .intro .greet { font-family: var(--font-display); font-size: 1.22rem; font-weight: 600; color: var(--ink); letter-spacing: .06em; }
+  .intro .intro-em { margin: 1.8rem 0 0; font-family: var(--font-display); font-size: 1.12rem; font-weight: 700; color: var(--gold-pale); }
 
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 1.6rem 1.35rem; margin-top: 2.2rem; box-shadow: var(--shadow); }
-  h2 { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: .08em; margin: 0 0 1.2rem; text-align: center; }
-  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.15rem; position: relative; }
-  .steps::before { content: ""; position: absolute; left: 1rem; top: 1rem; bottom: 2.9rem; width: 1px; background: var(--line); }
-  .steps li { display: grid; grid-template-columns: 2rem 1fr; gap: .85rem; align-items: start; position: relative; }
-  .num { width: 2rem; height: 2rem; border-radius: 50%; background: var(--lavender); color: #fff; font-family: var(--font-display); font-weight: 700; font-size: .95rem; display: grid; place-items: center; }
-  .steps p { margin: .1rem 0 0; }
+  /* セクション見出し */
+  .sec-title { text-align: center; margin: 0 0 1.4rem; }
+  .sec-title small { display: block; font-family: var(--font-latin); font-style: italic; font-size: 1rem; font-weight: 500; color: var(--gold); letter-spacing: .14em; line-height: 1.2; }
+  .sec-title span { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; letter-spacing: .12em; }
 
-  .notes-box { background: var(--surface-2); border-radius: 16px; padding: 1.2rem 1.25rem; margin-top: 1.2rem; }
-  .notes-box h2 { font-size: 1rem; margin-bottom: .7rem; }
-  .notes { margin: 0; padding: 0; list-style: none; font-size: .9rem; color: var(--ink-soft); display: grid; gap: .35rem; }
-  .notes li { position: relative; padding-left: 1.1em; }
-  .notes li::before { content: ""; position: absolute; left: .2em; top: .85em; width: 5px; height: 5px; border-radius: 50%; background: var(--rose); }
+  /* 受け取り方 */
+  .card {
+    position: relative; margin-top: 3rem; padding: 2rem 1.4rem 1.8rem; border-radius: 22px;
+    background: linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+    border: 1px solid var(--glass-line);
+    box-shadow: 0 24px 50px -28px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.08);
+  }
+  .card::before { content: ""; position: absolute; inset: 6px; border-radius: 17px; border: 1px solid rgba(226,194,125,.12); pointer-events: none; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.3rem; position: relative; }
+  .steps::before { content: ""; position: absolute; left: 1.2rem; top: 1.2rem; bottom: 3.1rem; width: 1px; background: linear-gradient(var(--gold), rgba(226,194,125,.15)); }
+  .steps li { display: grid; grid-template-columns: 2.4rem 1fr; gap: .9rem; align-items: start; position: relative; }
+  .num {
+    width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center;
+    font-family: var(--font-latin); font-style: italic; font-weight: 600; font-size: 1.25rem; color: var(--night);
+    background: radial-gradient(circle at 35% 30%, #fff4d6, var(--gold) 55%, var(--gold-deep));
+    box-shadow: 0 0 16px -2px rgba(226,194,125,.55);
+  }
+  .steps p { margin: .25rem 0 0; color: var(--ink); }
 
-  .cta-bottom { margin-top: 2.2rem; }
-  footer { text-align: center; font-size: .75rem; letter-spacing: .1em; color: var(--muted); margin-top: 2.6rem; }
+  /* お願い */
+  .notes-box { margin-top: 1.4rem; padding: 1.3rem 1.3rem 1.2rem; border-radius: 18px; background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.07); }
+  .notes-box h2 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; letter-spacing: .12em; text-align: center; margin: 0 0 .8rem; color: var(--gold-pale); }
+  .notes { margin: 0; padding: 0; list-style: none; font-size: .9rem; color: var(--ink-soft); display: grid; gap: .4rem; }
+  .notes li { position: relative; padding-left: 1.3em; }
+  .notes li::before { content: "✦"; position: absolute; left: 0; top: 0; font-size: .7em; line-height: 2.6; color: var(--gold); }
+
+  /* 下のCTA */
+  .closing { margin-top: 3rem; text-align: center; }
+  .closing p { font-family: var(--font-display); font-size: 1.05rem; color: var(--ink); margin: 0 0 1.1rem; letter-spacing: .06em; }
+  .closing .moon { color: var(--gold); }
+
+  footer { text-align: center; font-family: var(--font-latin); font-style: italic; font-size: .9rem; letter-spacing: .14em; color: var(--muted); margin-top: 3rem; }
+
+  /* 画面下に固定のボタン（上と下のボタンが見えないときだけ出す） */
+  .sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; padding: .7rem 16px calc(.7rem + env(safe-area-inset-bottom)); background: linear-gradient(transparent, rgba(26,19,50,.92) 35%); transform: translateY(110%); transition: transform .35s ease; }
+  .sticky.show { transform: none; }
+  .sticky .cta { max-width: 488px; margin: 0 auto; min-height: 56px; font-size: 1.02rem; }
+
+  /* ふわっと表示 */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stars::before, .stars::after, .cta::after { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .sticky { transition: none; }
+  }
 </style>
 </head>
 <body>
+<div class="stars" aria-hidden="true"></div>
 <main class="page">
   <section class="hero">
-    <div class="avatar-wrap"><img class="avatar" src="images/mira.jpg" alt="占い師ミラ" width="140" height="140"></div>
-    <p class="kicker">星々の声を届ける占い師</p>
-    <h1>ミラの<span class="accent">無料鑑定</span></h1>
-    <a class="cta" href="https://line.me/R/ti/p/@876vakgk" rel="noopener">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.6 2 11.03c0 3.97 3.55 7.3 8.35 7.93.33.07.77.22.88.5.1.25.07.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.45 5.73-3.37 7.82-5.78C21.24 14.38 22 12.8 22 11.03 22 6.6 17.52 3 12 3Z"/></svg>
-      LINEで無料鑑定を受け取る
-    </a>
-    <p class="cta-note">LINEアプリが開きます</p>
+    <picture>
+      <source srcset="images/hero.webp" type="image/webp">
+      <img class="hero-img" src="images/hero.jpg" alt="水晶玉を手にほほえむ占い師ミラ" width="900" height="1125" fetchpriority="high">
+    </picture>
+    <div class="hero-copy">
+      <p class="signature">Mira</p>
+      <p class="kicker">星々の声を届ける占い師</p>
+      <h1>ミラの無料鑑定</h1>
+      <div class="badge"><i>✦</i>公式LINEで受付中<i>✦</i></div>
+      <a class="cta" id="cta-top" href="https://line.me/R/ti/p/@876vakgk" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.6 2 11.03c0 3.97 3.55 7.3 8.35 7.93.33.07.77.22.88.5.1.25.07.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.45 5.73-3.37 7.82-5.78C21.24 14.38 22 12.8 22 11.03 22 6.6 17.52 3 12 3Z"/></svg>
+        LINEで無料鑑定を受け取る<span class="cta-arrow" aria-hidden="true">›</span>
+      </a>
+      <p class="cta-note">LINEアプリが開きます</p>
+    </div>
   </section>
 
-  <div class="ornament" aria-hidden="true">✦</div>
+  <div class="inner">
+    <div class="ornament reveal" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5c.4 4.6 1.9 8.6 6 10.5-4.1 1.9-5.6 5.9-6 10.5-.4-4.6-1.9-8.6-6-10.5 4.1-1.9 5.6-5.9 6-10.5Z"/></svg>
+    </div>
 
-  <section class="intro">
-    <p class="greet">ご訪問ありがとうございます🌙</p>
-    <p>ミラが霊視で、あなたの波動を<br>視させていただき、<br>今の状況と、これからの流れを<br>お伝えします。</p>
-    <p>お金、お仕事、人間関係、恋愛、<br>ご縁のこと。<br>ひとりで抱えているお悩みを、<br>そっとお聞かせくださいね。</p>
-    <p class="intro-em">無料鑑定は、ミラの公式LINEから<br>受け付けています✨</p>
-  </section>
+    <section class="intro reveal">
+      <p class="greet">ご訪問ありがとうございます🌙</p>
+      <p>ミラが霊視で、あなたの波動を<br>視させていただき、<br>今の状況と、これからの流れを<br>お伝えします。</p>
+      <p>お金、お仕事、人間関係、恋愛、<br>ご縁のこと。<br>ひとりで抱えているお悩みを、<br>そっとお聞かせくださいね。</p>
+      <p class="intro-em">無料鑑定は、ミラの公式LINEから<br>受け付けています✨</p>
+    </section>
 
-  <section class="card" aria-labelledby="how">
-    <h2 id="how">受け取り方</h2>
-    <ol class="steps">
-      <li><span class="num">1</span><p>ボタンから、ミラの公式LINEを友だち追加</p></li>
-      <li><span class="num">2</span><p>無料鑑定のご案内が、自動で届きます</p></li>
-      <li><span class="num">3</span><p>ご案内にそって、お申し込みください</p></li>
-    </ol>
-  </section>
+    <section class="card reveal" aria-labelledby="how">
+      <h2 class="sec-title" id="how"><small>How to</small><span>受け取り方</span></h2>
+      <ol class="steps">
+        <li><span class="num">1</span><p>ボタンから、ミラの公式LINEを友だち追加</p></li>
+        <li><span class="num">2</span><p>無料鑑定のご案内が、自動で届きます</p></li>
+        <li><span class="num">3</span><p>ご案内にそって、お申し込みください</p></li>
+      </ol>
+    </section>
 
-  <section class="notes-box" aria-labelledby="notes">
-    <h2 id="notes">お願い</h2>
-    <ul class="notes">
-      <li>無料鑑定は、初回の方・フォロワー様限定です</li>
-      <li>20歳以上の方に限らせていただいています</li>
-      <li>1日3名様までとさせていただいています</li>
-    </ul>
-  </section>
+    <section class="notes-box reveal" aria-labelledby="notes">
+      <h2 id="notes">お願い</h2>
+      <ul class="notes">
+        <li>無料鑑定は、初回の方・フォロワー様限定です</li>
+        <li>20歳以上の方に限らせていただいています</li>
+        <li>1日3名様までとさせていただいています</li>
+      </ul>
+    </section>
 
-  <div class="cta-bottom">
-    <a class="cta" href="https://line.me/R/ti/p/@876vakgk" rel="noopener">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.6 2 11.03c0 3.97 3.55 7.3 8.35 7.93.33.07.77.22.88.5.1.25.07.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.45 5.73-3.37 7.82-5.78C21.24 14.38 22 12.8 22 11.03 22 6.6 17.52 3 12 3Z"/></svg>
-      LINEで無料鑑定を受け取る
-    </a>
+    <section class="closing reveal" id="closing">
+      <p><span class="moon">☾</span> LINEでお待ちしています <span class="moon">☽</span></p>
+      <a class="cta" href="https://line.me/R/ti/p/@876vakgk" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.6 2 11.03c0 3.97 3.55 7.3 8.35 7.93.33.07.77.22.88.5.1.25.07.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.45 5.73-3.37 7.82-5.78C21.24 14.38 22 12.8 22 11.03 22 6.6 17.52 3 12 3Z"/></svg>
+        LINEで無料鑑定を受け取る<span class="cta-arrow" aria-hidden="true">›</span>
+      </a>
+    </section>
+
+    <footer>© Mira</footer>
   </div>
-
-  <footer>© Mira</footer>
 </main>
+
+<div class="sticky" id="sticky" aria-hidden="true">
+  <a class="cta" href="https://line.me/R/ti/p/@876vakgk" rel="noopener" tabindex="-1">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.6 2 11.03c0 3.97 3.55 7.3 8.35 7.93.33.07.77.22.88.5.1.25.07.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.45 5.73-3.37 7.82-5.78C21.24 14.38 22 12.8 22 11.03 22 6.6 17.52 3 12 3Z"/></svg>
+    LINEで無料鑑定を受け取る
+  </a>
+</div>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.15 });
+    els.forEach(function (e) { io.observe(e); });
+
+    // 上と下のボタンがどちらも見えていないときだけ、画面下にボタンを出す
+    var sticky = document.getElementById('sticky');
+    var seen = { top: true, closing: false };
+    var watch = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { seen[en.target.id === 'cta-top' ? 'top' : 'closing'] = en.isIntersecting; });
+      sticky.classList.toggle('show', !seen.top && !seen.closing);
+    });
+    watch.observe(document.getElementById('cta-top'));
+    watch.observe(document.getElementById('closing'));
+  })();
+</script>
 </body>
 </html>
