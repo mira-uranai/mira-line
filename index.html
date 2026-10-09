@@ -44,36 +44,15 @@
       var(--night);
   }
 
-  /* 星のきらめき（背景全体）。小さな点だとほこりに見えるので、十字に光る星を1つずつ光らせる */
-  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-  .sparkle {
-    position: absolute; width: var(--s); height: var(--s);
-    transform: translate(-50%, -50%) scale(0); opacity: 0;
-    background: radial-gradient(circle, #fff 0 9%, var(--c) 18%, transparent 55%);
-    filter: drop-shadow(0 0 calc(var(--s) * .35) var(--c));
-    animation: sparkle var(--d) ease-in-out var(--delay) infinite;
-  }
-  .sparkle::before, .sparkle::after {
-    content: ""; position: absolute; left: 50%; top: 50%; width: 170%; height: max(1.5px, 6%);
-    transform: translate(-50%, -50%); border-radius: 50%;
-    background: linear-gradient(90deg, transparent, var(--c) 35%, #fff 50%, var(--c) 65%, transparent);
-  }
-  .sparkle::after { transform: translate(-50%, -50%) rotate(90deg); }
-  @keyframes sparkle {
-    0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(.15) rotate(0deg); }
-    45%      { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(30deg); }
-    60%      { opacity: .85; transform: translate(-50%, -50%) scale(.85) rotate(40deg); }
-  }
-
   .page { position: relative; z-index: 1; max-width: 520px; margin: 0 auto; padding: 0 0 3.5rem; }
   .inner { padding: 0 20px; }
 
   /* ヒーロー */
   .hero { position: relative; padding-top: 3.2rem; }
   .hero::before { content: ""; position: absolute; left: 50%; top: 0; width: 340px; height: 340px; transform: translateX(-50%); background: radial-gradient(circle, rgba(199,181,242,.28), rgba(226,194,125,.08) 45%, transparent 70%); pointer-events: none; }
-  .portrait { position: relative; width: 132px; height: 132px; margin: 0 auto 1.3rem; border-radius: 50%; padding: 3px; background: linear-gradient(140deg, var(--gold-deep), var(--gold-pale) 40%, var(--gold) 60%, var(--gold-deep)); box-shadow: 0 0 0 6px rgba(226,194,125,.08), 0 0 40px -4px rgba(199,181,242,.45); }
-  .portrait::after { content: ""; position: absolute; inset: -12px; border-radius: 50%; border: 1px solid rgba(226,194,125,.22); }
-  .portrait img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--night); }
+  .portrait { position: relative; width: 210px; aspect-ratio: 600 / 607; margin: 0 auto 1rem; }
+  .portrait .icon { position: absolute; left: 50.6%; top: 48.7%; width: 57%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; object-fit: cover; box-shadow: 0 0 30px -4px rgba(199,181,242,.6); }
+  .portrait .frame { position: absolute; inset: 0; width: 100%; height: 100%; filter: drop-shadow(0 6px 10px rgba(5,2,15,.55)); }
   .hero-copy { position: relative; text-align: center; padding: 0 20px; }
   .signature { font-family: var(--font-latin); font-style: italic; font-weight: 500; font-size: 1.5rem; color: var(--gold-pale); letter-spacing: .08em; margin: 0; line-height: 1; opacity: .9; }
   .kicker { display: inline-block; font-size: .78rem; letter-spacing: .28em; color: var(--gold); margin: .9rem 0 0; padding-left: .28em; }
@@ -165,19 +144,18 @@
 
   @media (prefers-reduced-motion: reduce) {
     .cta::after { animation: none; }
-    .sparkle { animation: none; opacity: .6; transform: translate(-50%, -50%) scale(.6) rotate(30deg); }
     .reveal { opacity: 1; transform: none; transition: none; }
     .sticky { transition: none; }
   }
 </style>
 </head>
 <body>
-<div class="stars" aria-hidden="true"></div>
 <main class="page">
   <section class="hero">
     <div class="hero-copy">
       <div class="portrait">
-        <img src="images/portrait.jpg" alt="占い師ミラ" width="180" height="180" fetchpriority="high">
+        <img class="icon" src="images/portrait.jpg" alt="占い師ミラ" width="180" height="180" fetchpriority="high">
+        <picture><source srcset="images/medallion.webp" type="image/webp"><img class="frame" src="images/medallion.png" alt="" width="600" height="607"></picture>
       </div>
       <p class="signature">Mira</p>
       <p class="kicker">星々の声を届ける占い師</p>
@@ -241,27 +219,6 @@
 </div>
 
 <script>
-  // 背景の星：画面のあちこちに散らして、それぞれ違うタイミングで光らせる
-  (function () {
-    var box = document.querySelector('.stars');
-    if (!box) return;
-    var colors = ['#fff4d6', '#f6e6bd', '#ffffff', '#e2c27d', '#f3d9ff'];
-    var count = window.innerWidth < 600 ? 22 : 34;
-    for (var i = 0; i < count; i++) {
-      var s = document.createElement('span');
-      var r = Math.random();
-      var size = r < .55 ? 12 + Math.random() * 7 : (r < .88 ? 20 + Math.random() * 10 : 34 + Math.random() * 12);
-      s.className = 'sparkle';
-      s.style.left = (3 + Math.random() * 94) + '%';
-      s.style.top = (2 + Math.random() * 96) + '%';
-      s.style.setProperty('--s', size.toFixed(1) + 'px');
-      s.style.setProperty('--c', colors[Math.floor(Math.random() * colors.length)]);
-      s.style.setProperty('--d', (2.6 + Math.random() * 3.4).toFixed(2) + 's');
-      s.style.setProperty('--delay', (-Math.random() * 6).toFixed(2) + 's');
-      box.appendChild(s);
-    }
-  })();
-
   (function () {
     var els = document.querySelectorAll('.reveal');
     if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
