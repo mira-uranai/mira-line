@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>mira-shorts-uploader | ミラ</title>
+<style>
+  body { margin: 0; background: #1a1332; color: #eee8f7; font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; line-height: 1.8; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.5rem; margin-bottom: .2em; } h2 { font-size: 1.1rem; margin-top: 2em; }
+  .sub { color: #b9acd6; margin-top: 0; }
+  a { color: #d9c2ff; }
+  ol li { margin-bottom: .4em; }
+  .yt { display: inline-flex; align-items: center; gap: 8px; background: #2a2148; border: 1px solid #4a3f6b; border-radius: 8px; padding: 10px 14px; text-decoration: none; color: #eee8f7; }
+  .yt svg { flex: none; }
+  footer { margin-top: 3em; padding-top: 1.5em; border-top: 1px solid #4a3f6b; font-size: .95rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>mira-shorts-uploader</h1>
+<p class="sub">An internal tool that uploads Mira's own short videos to Mira's YouTube channel.</p>
+
+<a class="yt" href="https://www.youtube.com/@mira_uranai_channel">
+  <svg width="28" height="20" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>
+  ミラ 星々の声を届ける恋愛占い師（YouTube）
+</a>
+
+<h2>このツールについて / About</h2>
+<p>占い師ミラが自分で制作した短い縦型動画（タロットリーディング）を、ミラ自身のYouTubeチャンネルへ、予約した時刻にショート動画としてアップロードする社内用ツールです。チャンネル運営者以外は利用しません。</p>
+<p>This is a private tool used only by the owner of the channel above. It uploads videos that we create ourselves to our own YouTube channel at scheduled times, using the YouTube Data API (videos.insert). It does not access, collect, or share any viewer data.</p>
+
+<h2>しくみ / How it works</h2>
+<ol>
+  <li>運営者が、管理用のGoogleスプレッドシートに投稿日時・動画・タイトル・説明文を書く<br><small>The operator writes the date, video, title and description in a private Google Spreadsheet.</small></li>
+  <li>運営者がGoogleアカウントでログインし、アップロードの権限を許可する（最初の1回のみ）<br><small>The operator signs in once with Google OAuth and grants upload permission.</small></li>
+  <li>予約時刻になると、ツールが動画をミラのチャンネルへアップロードする<br><small>At the scheduled time, the tool uploads the video to the channel.</small></li>
+</ol>
+
+<h2>使用するAPI / APIs used</h2>
+<ul>
+  <li>YouTube Data API v3 — videos.insert（動画のアップロード）、channels.list（接続先チャンネルの確認）</li>
+  <li>Scopes: youtube.upload, youtube.readonly</li>
+</ul>
+
+<footer>
+  <a href="privacy.html">プライバシーポリシー / Privacy Policy</a> ／
+  <a href="terms.html">利用規約 / Terms of Service</a><br>
+  This tool uses YouTube API Services. <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a> ／ <a href="https://policies.google.com/privacy">Google Privacy Policy</a>
+</footer>
+</main>
+</body>
+</html>
